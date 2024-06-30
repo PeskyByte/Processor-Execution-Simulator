@@ -1,4 +1,4 @@
-public class Task {
+public class Task implements Comparable<Task>{
 
     private final int creationTime;
     private final int priority;
@@ -58,5 +58,14 @@ public class Task {
                 ", executionTime= " + executionTime +
                 ", priority= " + priority +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Task task) {
+        if(this.creationTime < task.creationTime) return -1;
+        if(this.creationTime > task.creationTime) return +1;
+        if(this.executionTime > task.executionTime) return -1;
+        if(this.executionTime < task.executionTime) return +1;
+        return 0;
     }
 }
