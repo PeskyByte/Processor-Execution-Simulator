@@ -16,7 +16,16 @@ public class Processor {
         return id;
     }
 
+    public void assignTask(Task task){
+        if(task == null) return;
+
+        task.setBeingServed();
+        currentTask = task;
+    }
+
     public String getCurrentTaskId() {
+        if(currentTask == null) return "Not occupied";
+
         return currentTask.getId();
     }
 
