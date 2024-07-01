@@ -1,4 +1,4 @@
-public class Task implements Comparable<Task>{
+public class Task implements Comparable<Task> {
 
     private final int creationTime;
     private final int priority;
@@ -34,21 +34,21 @@ public class Task implements Comparable<Task>{
         return id;
     }
 
-    public void setBeingServed(){
+    public void setBeingServed() {
         beingServed = true;
     }
 
-    public boolean isBeingServed(){
+    public boolean isBeingServed() {
         return beingServed;
     }
 
-    public boolean isFinished(){
+    public boolean isFinished() {
         return isDone;
     }
 
-    public void getServed(){
+    public void getServed() {
         executionTime--;
-        if(executionTime == 0) isDone = true;
+        if (executionTime == 0) isDone = true;
     }
 
     @Override
@@ -62,10 +62,10 @@ public class Task implements Comparable<Task>{
 
     @Override
     public int compareTo(Task task) {
-        if(this.creationTime < task.creationTime) return -1;
-        if(this.creationTime > task.creationTime) return +1;
-        if(this.executionTime > task.executionTime) return -1;
-        if(this.executionTime < task.executionTime) return +1;
+        if (this.creationTime < task.creationTime) return -1;
+        if (this.creationTime > task.creationTime) return +1;
+        if (this.executionTime > task.executionTime) return -1;
+        if (this.executionTime < task.executionTime) return +1;
         return 0;
     }
 }

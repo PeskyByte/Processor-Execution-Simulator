@@ -4,12 +4,12 @@ public class Clock {
     private static Clock clock;
     private int currentCycle;
 
-    private Clock(){
+    private Clock() {
         currentCycle = 1;
     }
 
-    public static Clock getInstance(){
-        if(clock == null){
+    public static Clock getInstance() {
+        if (clock == null) {
             clock = new Clock();
         }
         return clock;
@@ -19,7 +19,7 @@ public class Clock {
         return "C" + currentCycle;
     }
 
-    public void nextCycle(){
+    public void nextCycle() {
         try {
             TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException ie) {

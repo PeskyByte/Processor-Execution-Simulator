@@ -1,14 +1,16 @@
 public class Processor {
     private final String id;
-    private Task currentTask = null;
+    private Task currentTask;
     private static int currentId = 1;
 
     public Processor() {
         this.id = "P" + currentId;
         currentId++;
+
+        currentTask = null;
     }
 
-    public boolean isOccupied(){
+    public boolean isOccupied() {
         return currentTask != null;
     }
 
@@ -16,24 +18,24 @@ public class Processor {
         return id;
     }
 
-    public void assignTask(Task task){
-        if(task == null) return;
+    public void assignTask(Task task) {
+        if (task == null) return;
 
         task.setBeingServed();
         currentTask = task;
     }
 
     public String getCurrentTaskId() {
-        if(currentTask == null) return "Not occupied";
+        if (currentTask == null) return "Not occupied";
 
         return currentTask.getId();
     }
 
-    public void serve(){
-        if(this.currentTask == null) return;
+    public void serve() {
+        if (this.currentTask == null) return;
 
         this.currentTask.getServed();
-        if(this.currentTask.isFinished()){
+        if (this.currentTask.isFinished()) {
             currentTask = null;
         }
     }
