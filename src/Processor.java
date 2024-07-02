@@ -26,8 +26,7 @@ public class Processor {
     }
 
     public String getCurrentTaskId() {
-        if (currentTask == null) return "Not occupied";
-
+        if (currentTask == null) return null;
         return currentTask.getId();
     }
 
@@ -42,8 +41,10 @@ public class Processor {
 
     @Override
     public String toString() {
-        return "Processor id= " + id + " {" +
-                ", currentTask= " + getCurrentTaskId() +
-                '}';
+        String s = "Processor " + id + "{ currentTask= ";
+        if(this.isOccupied()) s += currentTask.toString();
+        else s += "Empty";
+        s += " }";
+        return s;
     }
 }
