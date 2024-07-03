@@ -31,7 +31,7 @@ public class Processor {
     @Override
     public String toString() {
         String s = "Processor " + id + "{ currentTask= ";
-        if(this.isOccupied()) s += currentTask.toString();
+        if (this.isOccupied()) s += currentTask.toString();
         else s += "Empty";
         s += " }";
         return s;

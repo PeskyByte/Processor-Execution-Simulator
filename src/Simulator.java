@@ -1,5 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -19,7 +17,7 @@ public class Simulator {
         tasks = InputReader.loadTasksFromFile(filePath);
     }
 
-    private void initializeProcessors(int numberOfProcessors){
+    private void initializeProcessors(int numberOfProcessors) {
         processors = new ArrayList<Processor>();
         for (int i = 0; i < numberOfProcessors; i++) {
             Processor processor = new Processor();

@@ -20,10 +20,6 @@ public class Task implements Comparable<Task> {
         return creationTime;
     }
 
-    public int getPriority() {
-        return priority;
-    }
-
     public boolean isFinished() {
         return isDone;
     }
