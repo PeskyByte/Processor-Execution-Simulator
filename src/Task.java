@@ -35,15 +35,17 @@ public class Task implements Comparable<Task> {
 
     @Override
     public String toString() {
-        return "Task " + id + " {" +
+        return "Task " + id + " { " +
                 "creationTime= " + creationTime +
                 ", executionTime= " + executionTime +
                 ", priority= " + priority +
-                '}';
+                " }";
     }
 
     @Override
     public int compareTo(Task task) {
+        if (this.priority > task.priority) return -1;
+        if (this.priority < task.priority) return +1;
         if (this.executionTime > task.executionTime) return -1;
         if (this.executionTime < task.executionTime) return +1;
         return 0;
