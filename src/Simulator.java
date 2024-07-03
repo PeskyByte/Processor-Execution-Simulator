@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,6 +6,7 @@ import java.util.ArrayList;
 public class Simulator {
     private Clock clock = Clock.getInstance();
     private ArrayList<Processor> processors = new ArrayList<Processor>();
+    private ArrayList<Task> tasks = new ArrayList<Task>();
     private int simulationTime;
     private Scheduler scheduler = new Scheduler();
 
@@ -22,25 +22,28 @@ public class Simulator {
         int numberOfTasks = Integer.parseInt(reader.readLine());
         for (int i = 0; i < numberOfTasks; i++) {
             String[] tokens = reader.readLine().split(" ", 3);
-            scheduler.addTaskToQueue(new Task(Integer.parseInt(tokens[0]),
+            tasks.add(new Task(Integer.parseInt(tokens[0]),
                     Integer.parseInt(tokens[1]),
                     Integer.parseInt(tokens[2])));
         }
         reader.close();
-
     }
 
     public void simulate() {
+        int currentTask = 0;
         while (simulationTime > 0) {
-            System.out.println(clock.getCurrentCycle());
-
+            System.out.println(clock.getCurrentCycleId());
+            while(currentTask < tasks.size() &&tasks.get(currentTask).getCreationTime() <= clock.getCurrentCycle()){
+                scheduler.addTaskToQueue(tasks.get(currentTask));
+                currentTask++;
+            }
             scheduler.sweep();
             scheduler.scheduleTask();
             for(Processor processor: processors){
-                processor.serve();
+                System.out.println(processor.toString());
             }
             for(Processor processor: processors){
-                System.out.println(processor.toString());
+                processor.serve();
             }
             clock.nextCycle();
             simulationTime--;

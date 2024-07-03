@@ -62,8 +62,6 @@ public class Task implements Comparable<Task> {
 
     @Override
     public int compareTo(Task task) {
-        if (this.creationTime < task.creationTime) return -1;
-        if (this.creationTime > task.creationTime) return +1;
         if (this.executionTime > task.executionTime) return -1;
         if (this.executionTime < task.executionTime) return +1;
         return 0;
