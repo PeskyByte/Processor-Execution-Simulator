@@ -14,20 +14,9 @@ public class Processor {
         return currentTask != null;
     }
 
-    public String getId() {
-        return id;
-    }
-
     public void assignTask(Task task) {
         if (task == null) return;
-
-        task.setBeingServed();
         currentTask = task;
-    }
-
-    public String getCurrentTaskId() {
-        if (currentTask == null) return null;
-        return currentTask.getId();
     }
 
     public void serve() {

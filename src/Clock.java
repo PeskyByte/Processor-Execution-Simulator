@@ -19,7 +19,7 @@ public class Clock {
         return "C" + currentCycle;
     }
 
-    public int getCurrentCycle(){
+    public int getCurrentCycle() {
         return currentCycle;
     }
 

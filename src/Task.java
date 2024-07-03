@@ -4,7 +4,6 @@ public class Task implements Comparable<Task> {
     private final int priority;
     private final String id;
     private int executionTime;
-    private boolean beingServed;
     private boolean isDone;
     private static int currentId = 1;
 
@@ -12,7 +11,6 @@ public class Task implements Comparable<Task> {
         this.creationTime = creationTime;
         this.executionTime = executionTime;
         this.priority = priority;
-        this.beingServed = false;
         this.isDone = false;
         this.id = "T" + currentId;
         currentId++;
@@ -22,24 +20,8 @@ public class Task implements Comparable<Task> {
         return creationTime;
     }
 
-    public int getExecutionTime() {
-        return executionTime;
-    }
-
     public int getPriority() {
         return priority;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setBeingServed() {
-        beingServed = true;
-    }
-
-    public boolean isBeingServed() {
-        return beingServed;
     }
 
     public boolean isFinished() {

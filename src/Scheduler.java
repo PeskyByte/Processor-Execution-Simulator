@@ -24,14 +24,13 @@ public class Scheduler {
 
     public void scheduleTask() {
         if (idleProcessors.isEmpty()) return;
-        while(!idleProcessors.isEmpty()){
-            Processor tmp = idleProcessors.remove(idleProcessors.size()-1);
+        while (!idleProcessors.isEmpty()) {
+            Processor tmp = idleProcessors.remove(idleProcessors.size() - 1);
             if (!highPriorityTasks.isEmpty()) {
                 tmp.assignTask(highPriorityTasks.poll());
-            } else if(!lowPriorityTasks.isEmpty()){
+            } else if (!lowPriorityTasks.isEmpty()) {
                 tmp.assignTask(lowPriorityTasks.poll());
-            }
-            else{
+            } else {
                 idleProcessors.add(tmp);
                 break;
             }
@@ -44,15 +43,15 @@ public class Scheduler {
         idleProcessors.add(processor);
     }
 
-    public void sweep(){
-        for(int i=busyProcessors.size()-1;i >=0;i--){
-            if(!busyProcessors.get(i).isOccupied()){
+    public void sweep() {
+        for (int i = busyProcessors.size() - 1; i >= 0; i--) {
+            if (!busyProcessors.get(i).isOccupied()) {
                 idleProcessors.add(busyProcessors.get(i));
                 busyProcessors.remove(i);
             }
         }
-        for(int i=idleProcessors.size()-1;i >=0;i--){
-            if(idleProcessors.get(i).isOccupied()){
+        for (int i = idleProcessors.size() - 1; i >= 0; i--) {
+            if (idleProcessors.get(i).isOccupied()) {
                 busyProcessors.add(idleProcessors.get(i));
                 idleProcessors.remove(i);
             }

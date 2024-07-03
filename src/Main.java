@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         if (args.length != 3) {
-            System.out.println("Wrong number of arguments.");
+            System.out.println("Wrong number of arguments. <Number of processors> <Simulation time> <Input file path>");
             return;
         }
         int numberOfProcessors = 0;
@@ -21,21 +21,11 @@ public class Main {
                 return;
             }
         } catch (Error e) {
-            System.out.println("Bad input.");
+            System.out.println("Bad input. <Number of processors> <Simulation time> <Input file path>");
             return;
         }
 
         Simulator sim = new Simulator(numberOfProcessors, simulationTime, filePath);
         sim.simulate();
-
-        /*
-         * when the current clock cycle is equal to the arrival time of the task in the List, you add it to the queues
-         * in the scheduler.
-         *
-         * you need to wait until the task list is empty and the queues are empty and all processors are idle to know
-         * that you are done with all tasks
-         *
-         * separate tasks into priority arrays, sort by smaller arrival time, if equal sort by bigger exec time
-         * */
     }
 }

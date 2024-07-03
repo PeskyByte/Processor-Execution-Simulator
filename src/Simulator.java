@@ -33,16 +33,16 @@ public class Simulator {
         int currentTask = 0;
         while (simulationTime > 0) {
             System.out.println(clock.getCurrentCycleId());
-            while(currentTask < tasks.size() &&tasks.get(currentTask).getCreationTime() <= clock.getCurrentCycle()){
+            while (currentTask < tasks.size() && tasks.get(currentTask).getCreationTime() <= clock.getCurrentCycle()) {
                 scheduler.addTaskToQueue(tasks.get(currentTask));
                 currentTask++;
             }
             scheduler.sweep();
             scheduler.scheduleTask();
-            for(Processor processor: processors){
+            for (Processor processor : processors) {
                 System.out.println(processor.toString());
             }
-            for(Processor processor: processors){
+            for (Processor processor : processors) {
                 processor.serve();
             }
             clock.nextCycle();
