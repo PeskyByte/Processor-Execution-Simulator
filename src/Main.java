@@ -1,6 +1,4 @@
-import java.io.File;
 import java.io.IOException;
-
 public class Main {
     public static void main(String[] args) throws IOException {
 
@@ -8,9 +6,9 @@ public class Main {
             System.out.println("Wrong number of arguments. <Number of processors> <Simulation time> <Input file path>");
             return;
         }
-        int numberOfProcessors = 0;
-        int simulationTime = 0;
-        String filePath = "";
+        int numberOfProcessors;
+        int simulationTime;
+        String filePath;
         try {
             numberOfProcessors = Integer.parseInt(args[0]);
             simulationTime = Integer.parseInt(args[1]);
