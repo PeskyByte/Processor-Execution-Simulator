@@ -15,8 +15,12 @@ public class Clock {
         return clock;
     }
 
-    public String getCurrentCycle() {
+    public String getCurrentCycleId() {
         return "C" + currentCycle;
+    }
+
+    public int getCurrentCycle(){
+        return currentCycle;
     }
 
     public void nextCycle() {
