@@ -15,11 +15,6 @@ public class Main {
             numberOfProcessors = Integer.parseInt(args[0]);
             simulationTime = Integer.parseInt(args[1]);
             filePath = args[2];
-            File file = new File(filePath);
-            if (!file.exists()) {
-                System.out.println("Wrong path, file does not exist.");
-                return;
-            }
         } catch (Error e) {
             System.out.println("Bad input. <Number of processors> <Simulation time> <Input file path>");
             return;

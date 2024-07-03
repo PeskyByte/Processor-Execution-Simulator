@@ -40,6 +40,7 @@ public class Task implements Comparable<Task> {
 
     @Override
     public int compareTo(Task task) {
+        if(task == null) throw new IllegalArgumentException();
         if (this.priority > task.priority) return -1;
         if (this.priority < task.priority) return +1;
         if (this.executionTime > task.executionTime) return -1;

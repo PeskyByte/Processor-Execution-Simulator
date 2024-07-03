@@ -1,10 +1,14 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class InputReader {
     public static ArrayList<Task> loadTasksFromFile(String filePath) throws IOException {
+
+        File file = new File(filePath);
+        if (!file.exists()) {
+            throw new FileNotFoundException();
+        }
+
         ArrayList<Task> tasks = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
