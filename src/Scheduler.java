@@ -23,16 +23,18 @@ public class Scheduler {
     }
 
     public void scheduleTask() {
-        System.out.println(lowPriorityTasks.size() + highPriorityTasks.size());
         if (idleProcessors.isEmpty()) return;
-        while(!idleProcessors.isEmpty() && !highPriorityTasks.isEmpty() && !lowPriorityTasks.isEmpty()){
+        while(!idleProcessors.isEmpty()){
             Processor tmp = idleProcessors.remove(idleProcessors.size()-1);
-            if (highPriorityTasks.isEmpty()) {
-                tmp.assignTask(lowPriorityTasks.poll());
-            } else {
+            if (!highPriorityTasks.isEmpty()) {
                 tmp.assignTask(highPriorityTasks.poll());
+            } else if(!lowPriorityTasks.isEmpty()){
+                tmp.assignTask(lowPriorityTasks.poll());
             }
-
+            else{
+                idleProcessors.add(tmp);
+                break;
+            }
             busyProcessors.add(tmp);
         }
     }
