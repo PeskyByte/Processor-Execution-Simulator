@@ -33,7 +33,7 @@ public class Task implements Comparable<Task> {
     public String toString() {
         return "Task " + id + " { " +
                 "creationTime= " + creationTime +
-                ", executionTime= " + executionTime +
+                ", TimeLeft= " + executionTime +
                 ", priority= " + priority +
                 " }";
     }
