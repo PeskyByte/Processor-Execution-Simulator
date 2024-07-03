@@ -1,35 +1,27 @@
 import java.util.*;
 
 public class Scheduler {
-    private PriorityQueue<Task> highPriorityTasks;
-    private PriorityQueue<Task> lowPriorityTasks;
+    private PriorityQueue<Task> tasks;
     private ArrayList<Processor> idleProcessors;
     private ArrayList<Processor> busyProcessors;
 
     public Scheduler() {
-        highPriorityTasks = new PriorityQueue<Task>();
-        lowPriorityTasks = new PriorityQueue<Task>();
+        tasks = new PriorityQueue<Task>();
         idleProcessors = new ArrayList<Processor>();
         busyProcessors = new ArrayList<Processor>();
     }
 
     public void addTaskToQueue(Task task) {
         if (task == null) throw new IllegalArgumentException();
-        if (task.getPriority() == 1) {
-            highPriorityTasks.add(task);
-        } else {
-            lowPriorityTasks.add(task);
-        }
+        tasks.add(task);
     }
 
     public void scheduleTask() {
         if (idleProcessors.isEmpty()) return;
         while (!idleProcessors.isEmpty()) {
             Processor tmp = idleProcessors.remove(idleProcessors.size() - 1);
-            if (!highPriorityTasks.isEmpty()) {
-                tmp.assignTask(highPriorityTasks.poll());
-            } else if (!lowPriorityTasks.isEmpty()) {
-                tmp.assignTask(lowPriorityTasks.poll());
+            if (!tasks.isEmpty()) {
+                tmp.assignTask(tasks.poll());
             } else {
                 idleProcessors.add(tmp);
                 break;
